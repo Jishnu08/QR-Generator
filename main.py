@@ -1,4 +1,6 @@
+from tkinter import *
 import tkinter as tk
+import ttkthemes
 from tkinter import ttk, messagebox
 import qrcode
 from PIL import ImageTk, Image
@@ -59,17 +61,23 @@ def save_qr():
         messagebox.showerror("Error", f"An error occurred during saving: {e}")
 
 # Create the main window
-root = tk.Tk()
+root = ttkthemes.ThemedTk()  
+root.get_themes()
+root.set_theme('radiance')
+root.geometry ('350x500+600+200')
 root.title("QR Code Generator")
+root.resizable(0,0)
+
+
 
 # Create and place widgets
-label_data = ttk.Label(root, text="Enter Data:")
+label_data = ttk.Label(root, text="Enter Data:",font=('times new roman',15, 'italic bold'),width=10)
 label_data.pack(pady=10)
 
-entry_data = ttk.Entry(root, width=40)
-entry_data.pack(pady=5)
+entry_data = ttk.Entry(root,width=40)
+entry_data.pack(padx=5,pady=5)
 
-generate_button = ttk.Button(root, text="Generate QR Code", command=generate_qr)
+generate_button = ttk.Button(root, text="GENERATE", command=generate_qr)
 generate_button.pack(pady=10)
 
 qr_label = ttk.Label(root)
